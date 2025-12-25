@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#020617" />
+    <meta name="description" content="Nonton anime subtitle Indonesia terlengkap dan terupdate di Animeku. Streaming lancar, kualitas HD.">
+    
+    <!-- PWA Settings -->
+    <link rel="manifest" href="/assets/manifest-Bz7-dqaC.json" />
+    <link rel="apple-touch-icon" href="https://ui-avatars.com/api/?name=Animeku&background=8b5cf6&color=fff&size=192&rounded=true" />
+    
+    <!-- iOS Specific: Fullscreen & Status Bar -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Animeku">
+
+    <title>Animeku - Premium Anime Streaming</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- PREMIUM FONT STACK: Plus Jakarta Sans (Titles) & Inter (UI Body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'], // Native System Feel
+              display: ['Plus Jakarta Sans', 'sans-serif'], // Premium Brand Feel
+            },
+            colors: {
+              background: '#020617', // Slate 950 (Deep Dark)
+              surface: '#0f172a',    // Slate 900
+              
+              // --- THEME OVERRIDE: VIOLET CYBERPUNK ---
+              indigo: {
+                50: '#f5f3ff',
+                100: '#ede9fe',
+                200: '#ddd6fe',
+                300: '#c4b5fd',
+                400: '#a78bfa',
+                500: '#8b5cf6', // Primary Brand (Vibrant Violet)
+                600: '#7c3aed', // Hover State
+                700: '#6d28d9',
+                800: '#5b21b6',
+                900: '#4c1d95',
+                950: '#2e1065',
+              },
+              
+              primary: '#8b5cf6',    // Violet 500
+              secondary: '#f43f5e',  // Rose 500
+              accent: '#22d3ee',     // Cyan 400 (Cyberpunk accent)
+              dark: '#000000',
+            },
+            letterSpacing: {
+              tighter: '-0.04em',
+              tight: '-0.02em',
+              normal: '0em',
+              wide: '0.02em',
+              wider: '0.05em',
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.4s ease-out forwards',
+              'fade-in-up': 'fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'slide-up': 'slideUp 0.3s ease-out forwards',
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'page-enter': 'pageEnter 0.3s ease-out forwards',
+              'spin-fast': 'spin 0.6s linear infinite',
+              'bounce-slow': 'bounce 2s infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translate3d(0, 15px, 0)' },
+                '100%': { opacity: '1', transform: 'translate3d(0, 0, 0)' },
+              },
+              slideUp: {
+                '0%': { transform: 'translate3d(0, 100%, 0)' },
+                '100%': { transform: 'translate3d(0, 0, 0)' },
+              },
+              pageEnter: {
+                '0%': { opacity: '0', transform: 'scale(0.99)' },
+                '100%': { opacity: '1', transform: 'none' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        --header-height: 60px;
+        --bottom-nav-height: 80px;
+        --safe-area-top: env(safe-area-inset-top);
+        --safe-area-bottom: env(safe-area-inset-bottom);
+      }
+      
+      html, body { 
+        height: 100%;
+        width: 100%;
+        overflow-x: hidden;
+        background-color: #020617;
+        
+        /* SCROLL PHYSICS TERBAIK: Menggunakan momentum scroll */
+        scroll-behavior: smooth; 
+        -webkit-overflow-scrolling: touch;
+        
+        /* Matikan overscroll native untuk pull-to-refresh custom */
+        overscroll-behavior-y: none;
+        overscroll-behavior-x: none;
+        
+        /* Hapus highlight tap di mobile */
+        -webkit-tap-highlight-color: transparent; 
+        -webkit-user-select: none;
+        user-select: none;
+
+        /* Font Rendering: Subpixel antialiasing untuk teks tajam */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+      }
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        color: #f8fafc;
+        padding-top: var(--safe-area-top);
+      }
+      
+      /* Typography Tweaks */
+      h1, h2, h3, h4, h5, h6, .font-display {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        letter-spacing: -0.02em;
+      }
+
+      /* CSS Performance Hacks */
+      .gpu-accelerated {
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+        will-change: transform, opacity;
+      }
+
+      /* Content Visibility: MAGIC untuk list panjang! 
+         Browser tidak akan merender elemen di bawah layar sampai di-scroll dekat.
+      */
+      .content-auto {
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 300px; /* Estimasi tinggi konten */
+      }
+
+      input, textarea, .selectable-text {
+        -webkit-user-select: text;
+        user-select: text;
+      }
+
+      * { outline: none; }
+      
+      /* Hide Scrollbar */
+      ::-webkit-scrollbar { display: none; }
+      body { -ms-overflow-style: none; scrollbar-width: none; }
+
+      .glass { 
+        background: rgba(15, 23, 42, 0.85);
+        backdrop-filter: blur(20px) saturate(180%); 
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255,255,255,0.08); 
+      }
+      
+      .page-transition-wrapper {
+        animation: pageEnter 0.3s ease-out forwards;
+        will-change: opacity, transform;
+      }
+      
+      .snap-x { scroll-snap-type: x mandatory; }
+      .snap-start { scroll-snap-align: start; }
+      
+      .safe-area-bottom { padding-bottom: env(safe-area-inset-bottom); }
+      .safe-area-top { padding-top: env(safe-area-inset-top); }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.10.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "firebase/": "https://esm.sh/firebase@^12.6.0/"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-Cbny3cHs.js"></script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('gesturestart', function(e) { e.preventDefault(); });
+    </script>
+  </body>
+</html>
